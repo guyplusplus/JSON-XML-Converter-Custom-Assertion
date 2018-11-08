@@ -10,7 +10,7 @@ The assertion supports:
 * for XML to JSON: if an empty non wrapped array (hence no XML element) creates an empty JSON array
 
 
-![Dialog Screenshot](/XMLJSONTransform/DialogScreenShot.png)
+![Dialog Screenshot](./DialogScreenShot.png)
 
 _Schema caching_ is controlled with the 3 following cluster properties. Every 5 minutes these properties are refreshed:
 * jsonxml.schemaCache.maxAge (in ms): entries older than this age are flushed. Set to -1 to avoid cache flush. Default is -1
