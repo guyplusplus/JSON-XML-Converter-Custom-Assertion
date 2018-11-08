@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import javax.swing.DefaultComboBoxModel;
 
+import com.geckotechnology.xmljsonconvert.cache.SchemaCache;
 import com.l7tech.policy.assertion.ext.AssertionEditor;
 import com.l7tech.policy.assertion.ext.AssertionEditorSupport;
 import com.l7tech.policy.assertion.ext.EditListener;
@@ -18,8 +19,17 @@ public class XMLJSONTransformJDialog extends XMLJSONTransformBaseJDialog impleme
 
 	private static final long serialVersionUID = -1124987349256892481L;
 	private static final Logger logger = Logger.getLogger(XMLJSONTransformJDialog.class.getName());
+	private static final long JSON_SCHEMA_CACHE_MAX_AGE = 5 * 60 * 1000;
+	private static final int JSON_SCHEMA_CACHE_MAX_ENTRIES = 16;
+	
 	private XMLJSONTransformCustomAssertion xmljsonTransformCustomAssertion;
 	private AssertionEditorSupport editorSupport;
+	
+	static {
+		//adjust JSON schema cache for UI
+		SchemaCache.setJsonxmlSchemaCacheMaxAge(JSON_SCHEMA_CACHE_MAX_AGE);
+		SchemaCache.setJsonxmlSchemaCacheMaxEntries(JSON_SCHEMA_CACHE_MAX_ENTRIES);		
+	}
 	
 	public XMLJSONTransformJDialog(XMLJSONTransformCustomAssertion customAssertion) {
 		xmljsonTransformCustomAssertion = customAssertion;

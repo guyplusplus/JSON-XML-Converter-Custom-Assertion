@@ -35,6 +35,7 @@ import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 
+import com.geckotechnology.xmljsonconvert.cache.SchemaCache;
 import com.geckotechnology.xmljsonconvert.core.JSONSchemaForXML;
 
 import java.awt.event.MouseAdapter;
@@ -287,7 +288,7 @@ public class XMLJSONTransformBaseJDialog extends JDialog {
 		try {
 			//parse JSON schema
 			String jsonSchemaString = getSchemaTextArea().getText();
-			JSONSchemaForXML jsonSchemaForXML = new JSONSchemaForXML(jsonSchemaString);
+			JSONSchemaForXML jsonSchemaForXML = SchemaCache.getSingleton().getJSONSchemaForXML(jsonSchemaString);
 			//apply the right transformation
 			String input = getTestInputJTextArea().getText();
 			String output = null;
