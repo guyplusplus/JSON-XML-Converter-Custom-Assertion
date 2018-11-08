@@ -9,6 +9,7 @@ The assertion supports:
 * $ref, which shall point to the definitions section
 * for XML to JSON: if an empty non wrapped array (hence no XML element) creates an empty JSON array
 
+The performance of the convertion is very good as both XML-to-JSON and JSON-to-XML is using streamed based parser. The target object is though created in memory before being converted into a string.
 
 ![Dialog Screenshot](./DialogScreenShot.png)
 
