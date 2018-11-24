@@ -52,6 +52,7 @@ public class XMLJSONTransformJDialog extends XMLJSONTransformBaseJDialog impleme
 		getFormatOutputJCheckBox().setSelected(customAssertion.isOutputFormatted());
 		//set schema
 		getSchemaTextArea().setText(customAssertion.getJsonSchema());
+		getSchemaTextArea().setCaretPosition(0); //move carret to the start of the text
 	}
 
 	@Override
