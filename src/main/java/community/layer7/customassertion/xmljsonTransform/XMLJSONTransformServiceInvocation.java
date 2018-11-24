@@ -3,9 +3,6 @@ package community.layer7.customassertion.xmljsonTransform;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.json.JSONObject;
-import org.w3c.dom.Document;
-
 import com.geckotechnology.xmljsonconvert.cache.SchemaCache;
 import com.geckotechnology.xmljsonconvert.core.JSONSchemaForXML;
 import com.l7tech.policy.assertion.ext.CustomAssertionStatus;
@@ -59,14 +56,10 @@ public class XMLJSONTransformServiceInvocation extends ServiceInvocation {
         	String jsonSchemaString = customPolicyContext.expandVariable(xmljsonTransformCustomAssertion.getJsonSchema());
         	JSONSchemaForXML jsonSchemaForXML = SchemaCache.getSingleton().getJSONSchemaForXML(jsonSchemaString);
         	String output = null;
-        	if(xmljsonTransformCustomAssertion.getTransformationTypeID() == TransformationHelper.XML_TO_JSON_TRANSFORMATION_ID) {
-	        	JSONObject jsonObject = jsonSchemaForXML.mapXMLToJSON(input);
-	            output = JSONSchemaForXML.jsonToString(jsonObject, xmljsonTransformCustomAssertion.isOutputFormatted());
-        	}
-        	else if(xmljsonTransformCustomAssertion.getTransformationTypeID() == TransformationHelper.JSON_TO_XML_TRANSFORMATION_ID) {
-        		Document document = jsonSchemaForXML.mapJSONToXML(input);
-        		output = JSONSchemaForXML.xmlToString(document, xmljsonTransformCustomAssertion.isOutputFormatted());
-        	}
+        	if(xmljsonTransformCustomAssertion.getTransformationTypeID() == TransformationHelper.XML_TO_JSON_TRANSFORMATION_ID)
+	        	output = jsonSchemaForXML.mapXMLToJSONString(input, xmljsonTransformCustomAssertion.isOutputFormatted());
+        	else if(xmljsonTransformCustomAssertion.getTransformationTypeID() == TransformationHelper.JSON_TO_XML_TRANSFORMATION_ID)
+        		output = jsonSchemaForXML.mapJSONToXMLString(input, xmljsonTransformCustomAssertion.isOutputFormatted());
         	else
         		throw new Exception("Internal error: invalid transformationTypeID=" + xmljsonTransformCustomAssertion.getTransformationTypeID());
             customPolicyContext.setVariable(xmljsonTransformCustomAssertion.getOutputVariable(), output);
