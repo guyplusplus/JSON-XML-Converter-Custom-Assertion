@@ -4,9 +4,9 @@
     <!--
     Define properties
     -->
-    <property name="package.jar" value="XMLJSONTransformCustomAssertion-0.9.2.2"/>
-    <property name="resource.jar.excludes" value="**/rsyntaxtextarea-2.0.6.jar"/>
     <property name="resource.jar.xmljsonconvertlibversion" value="0.9.6"/>
+    <property name="package.jar" value="XMLJSONTransformCustomAssertion-${resource.jar.xmljsonconvertlibversion}"/>
+    <property name="resource.jar.excludes" value="**/rsyntaxtextarea-2.0.6.jar"/>
 
     <!-- 
     Import the common module build script

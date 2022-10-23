@@ -85,7 +85,7 @@ public class XMLJSONTransformBaseJDialog extends JDialog {
 	}
 	
 	public XMLJSONTransformBaseJDialog() {
-		setTitle("XML / JSON Transform Properties - v0.9.2.2");
+		setTitle("XML / JSON Transform Properties - v0.9.6");
 		setModal(true);
 		setBounds(100, 100, 872, 500);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
